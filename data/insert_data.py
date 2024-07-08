@@ -60,5 +60,5 @@ def upload_2024():
         for y in range(1,11):
             upload_psql('./2024/json/' + str(x) + '-' + str(y) + '.json')
 
-# create_table()
-# upload_2024()
+create_table()
+upload_2024()
