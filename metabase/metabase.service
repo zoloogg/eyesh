@@ -1,0 +1,14 @@
+[Unit]
+Description=Metabase service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=Ubuntu
+ExecStart=/usr/bin/java -jar -DMB_DB_CONNECTION_URI="jdbc:postgresql://localhost:5432/metabase" -DMB_DB_USER="metabase_admin" -DMB_DB_PASS=<password> /opt/metabase/metabase.jar
+
+[Install]
+WantedBy=multi-user.target
