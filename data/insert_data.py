@@ -1,12 +1,19 @@
 import json
 import psycopg2
+import os
+
+database_host = os.environ.get("DATABASE_HOST", "127.0.0.1")
+database = os.environ.get("DATABASE", "psotgres")
+database_user = os.environ.get('DATABASE_USER', 'postgres')
+database_password = os.environ.get('DATABASE_PASSWORD', 'fred')
+database_port = os.environ.get('DATABASE_PORT', "5432")
 
 conn = psycopg2.connect(
-    database = "postgres",
-    user = "postgres",
-    password = "fred",
-    host = "127.0.0.1",
-    port = "5432"
+    database = database,
+    user = database_user,
+    password = database_password,
+    host = database_host,
+    port = database_port
 )
 
 def create_table():
@@ -54,4 +61,4 @@ def upload_2024():
             upload_psql('./2024/json/' + str(x) + '-' + str(y) + '.json')
 
 # create_table()
-upload_2024()
+# upload_2024()
